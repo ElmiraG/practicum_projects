@@ -9,11 +9,8 @@
 
 Источник данных: [https://www.kaggle.com/barelydedicated/bank-customer-churn-modeling](https://www.kaggle.com/barelydedicated/bank-customer-churn-modeling)
 
-# Описание данных
-**Файл:** /datasets/Churn.csv
-
+## Описание данных
 **Признаки:**
-
 
 - **RowNumber** — индекс строки в данных
 
@@ -46,7 +43,7 @@
 
 - **Exited** — факт ухода клиента
 
-# План по выполнению проекта
+##  План по выполнению проекта
 1. Загрузить и подготовить данные.
 
 2. Исследовать баланс классов, обучить модель без учёта дисбаланса.
@@ -54,3 +51,34 @@
 3. Улучшить качество модели, учитывая дисбаланс классов. Обучить разные модели и найти лучшую.
 
 4. Провести финальное тестирование.
+
+## Вывод
+
+1. Предобработка данных:
+- Приведены названия столбцов к строчным и исправлены для точности.
+- Заполнены пропуски в 'Tenure', изменен тип на integer.
+- Категориальные столбцы 'Geography' и 'Gender' преобразованы.
+- В 'HasCrCard' и 'IsActiveMember' заменен тип на bool.
+
+2. Исследование задачи:
+- Проверена мультиколлинеарность признаков.
+- Метрика f1: RandomForest - 0.65, DecisionTree - 0.58, LogisticRegression - 0.53.
+- Масштабирование не повлияло на f1 метрики моделей DecisionTree и RandomForest.
+
+3. Баланс классов:
+- Использованы техники Undersampling и Oversampling.
+- Методы Undersampling: Downsampling, RandomUnderSampler(), K-Means.
+- Методы Oversampling: Upsampling, RandomOverSampler, SMOTE.
+- Максимальная метрика f1 у RandomForest с Tomek Links - 0.66.
+
+4. Тестирование моделей:
+- RandomForest на тестовой выборке: f1 = 0.60.
+- Сравнение с изначальной моделью RF: f1 уменьшилась с 0.66 до 0.60. 
+- Изменения: истинно положительные уменьшились с 0.14 до 0.13; ложно отрицательные увеличились с 0.061 до 0.077; accuracy снизилась с 0.85 до 0.83.
+
+Гиперпараметры итоговой модели RandomForest:
+- f1 = 0.65,
+- class_weight = 'balanced',
+- criterion = 'entropy',
+- max_depth = 10,
+- n_estimators = 50.
