@@ -33,7 +33,7 @@
     - **start_ride_price** — стоимость начала поездки;
     - **subscription_fee** — стоимость ежемесячного платежа.
 
-## Выводы
+## Вывод
 
 1. Для анализа сервиса аренды самокатов GoFast использованы данные: usersgo.csv, ridesgo.csv, subscriptionsgo.csv.
 
